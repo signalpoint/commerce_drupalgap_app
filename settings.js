@@ -39,10 +39,10 @@ Drupal.settings.cache.views.expiration = 3600;
  *************/
 
 // App Title
-drupalgap.settings.title = 'DrupalGap';
+drupalgap.settings.title = 'Commerce DrupalGap';
  
 // App Front Page
-drupalgap.settings.front = 'dashboard';
+drupalgap.settings.front = 'tops';
 
 // Theme
 drupalgap.settings.theme = 'easystreet3';
@@ -75,11 +75,11 @@ drupalgap.settings.loader = {
 
 /** Contributed Modules - www/app/modules **/
 
-//Drupal.modules.contrib['example'] = {};
+Drupal.modules.contrib['commerce'] = {};
 
 /** Custom Modules - www/app/modules/custom **/
 
-//Drupal.modules.custom['my_module'] = {};
+Drupal.modules.custom['example'] = {};
 
 /***************************************|
  * Menus - http://drupalgap.org/node/85 |
@@ -136,35 +136,7 @@ drupalgap.settings.menus['user_menu_authenticated'] = {
 
 // Main Menu
 drupalgap.settings.menus['main_menu'] = {
-  links:[
-    {
-      title:'Content',
-      path:'node',
-      options:{
-        attributes:{
-          'data-icon':'star'
-        }
-      }
-    },
-    {
-      title:'Taxonomy',
-      path:'taxonomy/vocabularies',
-      options:{
-        attributes:{
-          'data-icon':'grid'
-        }
-      }
-    },
-    {
-      title:'Users',
-      path:'user-listing',
-      options:{
-        attributes:{
-          'data-icon':'info'
-        }
-      }
-    }
-  ]
+  links:[ ]
 };
 
 /****************************************|
@@ -265,7 +237,7 @@ drupalgap.settings.camera = {
 //   PhoneGap 3.0.0 and above note, you must install a plugin to see console
 //   log messages. See the 'Debug console' section here:
 //   http://docs.phonegap.com/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface
-Drupal.settings.debug = false; /* Set to true to see console.log debug
+Drupal.settings.debug = true; /* Set to true to see console.log debug
                                   information. Set to false when publishing
                                   app! */
 
