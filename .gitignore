@@ -1,0 +1,3 @@
+# Ignore the commerce module, since we git clone it.
+app/modules/commerce
+
