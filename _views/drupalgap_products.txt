@@ -1,9 +1,9 @@
 $view = new view();
-$view->name = 'tops';
+$view->name = 'drupalgap_products';
 $view->description = '';
 $view->tag = 'default';
 $view->base_table = 'node';
-$view->human_name = 'Tops';
+$view->human_name = 'DrupalGap Products';
 $view->core = 7;
 $view->api_version = '3.0';
 $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -36,6 +36,16 @@ $handler->display->display_options['style_options']['char_encoding'] = array();
 $handler->display->display_options['relationships']['field_product_product_id']['id'] = 'field_product_product_id';
 $handler->display->display_options['relationships']['field_product_product_id']['table'] = 'field_data_field_product';
 $handler->display->display_options['relationships']['field_product_product_id']['field'] = 'field_product_product_id';
+/* Relationship: Content: Category (field_category) */
+$handler->display->display_options['relationships']['field_category_tid']['id'] = 'field_category_tid';
+$handler->display->display_options['relationships']['field_category_tid']['table'] = 'field_data_field_category';
+$handler->display->display_options['relationships']['field_category_tid']['field'] = 'field_category_tid';
+$handler->display->display_options['relationships']['field_category_tid']['required'] = TRUE;
+/* Relationship: Content: Collection (field_collection) */
+$handler->display->display_options['relationships']['field_collection_tid']['id'] = 'field_collection_tid';
+$handler->display->display_options['relationships']['field_collection_tid']['table'] = 'field_data_field_collection';
+$handler->display->display_options['relationships']['field_collection_tid']['field'] = 'field_collection_tid';
+$handler->display->display_options['relationships']['field_collection_tid']['required'] = TRUE;
 /* Field: Content: Nid */
 $handler->display->display_options['fields']['nid']['id'] = 'nid';
 $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -79,10 +89,42 @@ $handler->display->display_options['fields']['commerce_price']['settings'] = arr
 );
 $handler->display->display_options['fields']['commerce_price']['group_column'] = 'amount';
 $handler->display->display_options['fields']['commerce_price']['field_api_classes'] = TRUE;
+/* Field: Content: Collection */
+$handler->display->display_options['fields']['field_collection']['id'] = 'field_collection';
+$handler->display->display_options['fields']['field_collection']['table'] = 'field_data_field_collection';
+$handler->display->display_options['fields']['field_collection']['field'] = 'field_collection';
+$handler->display->display_options['fields']['field_collection']['label'] = '';
+$handler->display->display_options['fields']['field_collection']['element_type'] = '0';
+$handler->display->display_options['fields']['field_collection']['element_label_colon'] = FALSE;
+$handler->display->display_options['fields']['field_collection']['element_wrapper_type'] = '0';
+$handler->display->display_options['fields']['field_collection']['element_default_classes'] = FALSE;
+$handler->display->display_options['fields']['field_collection']['field_api_classes'] = TRUE;
 /* Sort criterion: Content: Title */
 $handler->display->display_options['sorts']['title']['id'] = 'title';
 $handler->display->display_options['sorts']['title']['table'] = 'node';
 $handler->display->display_options['sorts']['title']['field'] = 'title';
+/* Contextual filter: Taxonomy term: Name */
+$handler->display->display_options['arguments']['name_1']['id'] = 'name_1';
+$handler->display->display_options['arguments']['name_1']['table'] = 'taxonomy_term_data';
+$handler->display->display_options['arguments']['name_1']['field'] = 'name';
+$handler->display->display_options['arguments']['name_1']['relationship'] = 'field_collection_tid';
+$handler->display->display_options['arguments']['name_1']['default_action'] = 'empty';
+$handler->display->display_options['arguments']['name_1']['exception']['value'] = '';
+$handler->display->display_options['arguments']['name_1']['default_argument_type'] = 'fixed';
+$handler->display->display_options['arguments']['name_1']['summary']['number_of_records'] = '0';
+$handler->display->display_options['arguments']['name_1']['summary']['format'] = 'default_summary';
+$handler->display->display_options['arguments']['name_1']['summary_options']['items_per_page'] = '25';
+$handler->display->display_options['arguments']['name_1']['limit'] = '0';
+/* Contextual filter: Taxonomy term: Name */
+$handler->display->display_options['arguments']['name']['id'] = 'name';
+$handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+$handler->display->display_options['arguments']['name']['field'] = 'name';
+$handler->display->display_options['arguments']['name']['relationship'] = 'field_category_tid';
+$handler->display->display_options['arguments']['name']['default_argument_type'] = 'fixed';
+$handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+$handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+$handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+$handler->display->display_options['arguments']['name']['limit'] = '0';
 /* Filter criterion: Content: Published */
 $handler->display->display_options['filters']['status']['id'] = 'status';
 $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -90,15 +132,8 @@ $handler->display->display_options['filters']['status']['field'] = 'status';
 $handler->display->display_options['filters']['status']['value'] = 1;
 $handler->display->display_options['filters']['status']['group'] = 1;
 $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-/* Filter criterion: Content: Type */
-$handler->display->display_options['filters']['type']['id'] = 'type';
-$handler->display->display_options['filters']['type']['table'] = 'node';
-$handler->display->display_options['filters']['type']['field'] = 'type';
-$handler->display->display_options['filters']['type']['value'] = array(
-  'tops' => 'tops',
-);
 
-/* Display: Page */
-$handler = $view->new_display('page', 'Page', 'page');
-$handler->display->display_options['path'] = 'tops.json';
+/* Display: JSON */
+$handler = $view->new_display('page', 'JSON', 'page');
+$handler->display->display_options['path'] = 'drupalgap/products/%/%';
 
