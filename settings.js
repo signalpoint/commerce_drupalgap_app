@@ -1,3 +1,5 @@
+window.localStorage.clear();
+
 /* Specify DrupalGap Mobile Application Settings Here */
 
 /****************************************|
@@ -42,7 +44,9 @@ Drupal.settings.cache.views.expiration = 3600;
 drupalgap.settings.title = 'Commerce DrupalGap';
  
 // App Front Page
-drupalgap.settings.front = 'tops';
+//drupalgap.settings.front = 'dashboard';
+//drupalgap.settings.front = 'node/33';
+drupalgap.settings.front = 'cart';
 
 // Theme
 drupalgap.settings.theme = 'easystreet3';
@@ -136,7 +140,12 @@ drupalgap.settings.menus['user_menu_authenticated'] = {
 
 // Main Menu
 drupalgap.settings.menus['main_menu'] = {
-  links:[ ]
+  links:[
+    { title: 'To carry', path: 'collection/carry/all' },
+    { title: 'To drink with', path: 'collection/drink/all' },
+    { title: 'To geek out', path: 'collection/geek/all' },
+    { title: 'To wear', path: 'collection/wear/all' }
+  ]
 };
 
 /****************************************|
@@ -164,15 +173,16 @@ drupalgap.settings.blocks.easystreet3 = {
     }
   },
   sub_navigation:{
-    main_menu:{
-      roles:{
-        value:['administrator'],
-        mode:'include',
-      }
-    },
-    primary_local_tasks:{},
+    main_menu:{ },
+    /*primary_local_tasks:{},*/
   },
   content:{
+    commerce_cart: {
+      pages: {
+        mode: 'exclude',
+        value: ['cart']
+      }
+    },
     messages: {},
     main:{}
   },
