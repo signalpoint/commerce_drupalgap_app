@@ -47,6 +47,7 @@ drupalgap.settings.title = 'Commerce DrupalGap';
 //drupalgap.settings.front = 'dashboard';
 //drupalgap.settings.front = 'node/33';
 drupalgap.settings.front = 'cart';
+//drupalgap.settings.front = 'checkout/10';
 
 // Theme
 drupalgap.settings.theme = 'easystreet3';
@@ -79,11 +80,13 @@ drupalgap.settings.loader = {
 
 /** Contributed Modules - www/app/modules **/
 
+Drupal.modules.contrib['addressfield'] = {};
 Drupal.modules.contrib['commerce'] = {};
 
 /** Custom Modules - www/app/modules/custom **/
 
 Drupal.modules.custom['example'] = {};
+Drupal.modules.custom['my_module'] = {};
 
 /***************************************|
  * Menus - http://drupalgap.org/node/85 |
@@ -180,7 +183,7 @@ drupalgap.settings.blocks.easystreet3 = {
     commerce_cart: {
       pages: {
         mode: 'exclude',
-        value: ['cart']
+        value: ['cart', 'checkout/*', 'checkout/shipping/*']
       }
     },
     messages: {},
