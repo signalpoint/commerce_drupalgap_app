@@ -15,7 +15,7 @@ function example_menu() {
  */
 function example_collection_page() {
   
-  // Grab the collection and category from the path.
+  // Grab the collection from the path.
   var collection = arg(1);
   var collection_path = '';
   switch (collection) {
@@ -46,8 +46,9 @@ function example_collection_page() {
  * Collection row callback.
  */
 function example_collection_page_row(view, row) {
+  var image = theme('image', { path: row.image });
   var html = l(
-    theme('image', { path: row.image }) +
+     image +
       '<h2>' + row.title + '</h2>' + 
       '<p class="ui-li-aside">' + row.price + '</p>',
     'node/' + row.nid
